@@ -1,8 +1,47 @@
-# ChatGPT Telegram Bot: **GPT-4. Fast. No daily limits. Special chat modes**
+# ChatGPT Telegram Bot: **GPT-4o with no daily limits, custom agents y save convo en DB. Special chat modes**
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/karfly/chatgpt_telegram_bot/main/static/header.png" align="center" style="width: 100%" />
 </div>
+
+## Setup
+1. Get your [OpenAI API](https://openai.com/api/) key
+2. Get your Telegram bot token from [@BotFather](https://t.me/BotFather)
+3. Edit `[config/config.example.yml](https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/config.example.yml)` to set your tokens and run 2 commands below (*if you're advanced user, you can also edit* `config/config.example.env`):
+telegram_token: ""
+openai_api_key: ""
+openai_api_base: null  # leave null to use default api base or you can put your own base url here
+allowed_telegram_usernames: [] 
+
+>Models - https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/models.yml:
+Available_text_models: ["gpt-3.5-turbo", "gpt-3.5-turbo-16k", "gpt-4-1106-preview", "gpt-4-vision-preview", "gpt-4", "text-davinci-003", "gpt-4o"]
+
+
+>Easily create your own chat modes by editing `config/chat_modes.yml`: 
+Ej;
+assistant:
+  name: 👩🏼‍🎓 General Assistant
+  model_type: text
+  welcome_message: 👩🏼‍🎓 Hi, I'm <b>General Assistant</b>. How can I help you?
+  prompt_start: |
+    As an advanced chatbot Assistant, your primary goal is to assist users to the best of your ability. This may involve answering questions, providing helpful information, or completing tasks based on user input. In order to effectively assist users, it is important to be detailed and thorough in your responses. Use examples and evidence to support your points and justify your recommendations or solutions. Remember to always prioritize the needs and satisfaction of the user. Your ultimate goal is to provide a helpful and enjoyable experience for the user.
+    If user asks you about programming or asks to write code do not answer his question, but be sure to advise him to switch to a special mode \"👩🏼‍💻 Code Assistant\" by sending the command /mode to chat.
+  parse_mode: html
+https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/chat_modes.yml
+
+>MongoDB (para sync conv);
+https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/config.example.env
+
+
+ ```bash
+    mv config/config.example.yml config/config.yml
+    mv config/config.example.env config/config.env
+    ```
+   4.  And now **run**:
+    ```bash
+    docker-compose --env-file config/config.env up --build
+    ```
+
 
 <br>
 
@@ -15,42 +54,28 @@ We all love [chat.openai.com](https://chat.openai.com), but... It's TERRIBLY lag
 
 This repo is ChatGPT re-created as Telegram Bot. **And it works great.**
 
-You can deploy your own bot, or use mine: [@chatgpt_karfly_bot](https://t.me/chatgpt_karfly_bot)
+Demo @chatgpt_karfly_bot
 
 ## Features
 - Low latency replies (it usually takes about 3-5 seconds)
 - No request limits
-- Message streaming (watch demo)
-- GPT-4 and GPT-4 Turbo support
-- GPT-4 Vision support
+- Message streaming.
+- GPT-4 and GPT-4 Turbo y GPT-4 Vision support
 - Group Chat support (/help_group_chat to get instructions)
 - DALLE 2 (choose 👩‍🎨 Artist mode to generate images)
 - Voice message recognition
 - Code highlighting
-- 15 special chat modes: 👩🏼‍🎓 Assistant, 👩🏼‍💻 Code Assistant, 👩‍🎨 Artist, 🧠 Psychologist, 🚀 Elon Musk and other. You can easily create your own chat modes by editing `config/chat_modes.yml`
+- 15 special chat modes: 👩🏼‍🎓 Assistant, 👩🏼‍💻 Code Assistant, 👩‍🎨 Artist, 🧠 Psychologist, 🚀 Elon Musk and other. 
 - Support of [ChatGPT API](https://platform.openai.com/docs/guides/chat/introduction)
-- List of allowed Telegram users
-- Track $ balance spent on OpenAI API
+- Allow only your user for protection.
+- Track $ balance spent on OpenAI API.
+- Dummy API key + proxy URl.
+- 
 
 <p align="center">
   <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmM2ZWVjY2M4NWQ3ZThkYmQ3MDhmMTEzZGUwOGFmOThlMDIzZGM4YiZjdD1n/unx907h7GSiLAugzVX/giphy.gif" />
 </p>
-
----
-
-## News
-- *21 Apr 2023*:
-    - DALLE 2 support
-    - Group Chat support (/help_group_chat to get instructions)
-    - 10 new hot chat modes and updated chat mode menu with pagination: 🇬🇧 English Tutor, 🧠 Psychologist, 🚀 Elon Musk, 📊 SQL Assistant and other.
-- *24 Mar 2023*: GPT-4 support. Run `/settings` command to choose model
-- *15 Mar 2023*: Added message streaming. Now you don't have to wait until the whole message is ready, it's streamed to Telegram part-by-part (watch demo)
-- *9 Mar 2023*: Now you can easily create your own Chat Modes by editing `config/chat_modes.yml`
-- *8 Mar 2023*: Added voice message recognition with [OpenAI Whisper API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis). Record a voice message and ChatGPT will answer you!
-- *2 Mar 2023*: Added support of [ChatGPT API](https://platform.openai.com/docs/guides/chat/introduction).
-- *1 Aug 2023*: Added OpenAI API Base to config (useful while using OpenAI-compatible API like [LocalAI](https://github.com/go-skynet/LocalAI))
-- *15 Nov 2023*: Added support of [GPT-4 Turbo](https://help.openai.com/en/articles/8555510-gpt-4-turbo)
-- *2 Apt 2024*: Added [GPT-4 Vision](https://platform.openai.com/docs/guides/vision) support
+support of [GPT-4 Turbo](https://help.openai.com/en/articles/8555510-gpt-4-turbo) + [GPT-4 Vision](https://platform.openai.com/docs/guides/vision) support
 
 ## Bot commands
 - `/retry` – Regenerate last bot answer
@@ -60,54 +85,6 @@ You can deploy your own bot, or use mine: [@chatgpt_karfly_bot](https://t.me/cha
 - `/settings` – Show settings
 - `/help` – Show help
 
-## Setup
-1. Get your [OpenAI API](https://openai.com/api/) key
 
-2. Get your Telegram bot token from [@BotFather](https://t.me/BotFather)
 
-3. Edit `config/config.example.yml` to set your tokens and run 2 commands below (*if you're advanced user, you can also edit* `config/config.example.env`):
-    ```bash
-    mv config/config.example.yml config/config.yml
-    mv config/config.example.env config/config.env
-    ```
 
-4. 🔥 And now **run**:
-    ```bash
-    docker-compose --env-file config/config.env up --build
-    ```
-
-## ❤️ Top donations
-You can be in this list:
-
-1. [LilRocco](https://t.me/LilRocco). Donation: **11000$** (!!!)
-
-1. [Mr V](https://t.me/mr_v_v_v). Donation **250$**
-
-1. [unexpectedsunday](https://t.me/unexpectedsunday). Donation: **150$**
-
-1. [Sem](https://t.me/sembrestels). Donation: **100$**
-
-1. [Miksolo](https://t.me/Miksolo). Donation: **81$**
-
-    *Message:* Thank you. Using this docker container every day! Actually created the same project but its good to see that this one is being supported often. Will continue using it! Good architecture choices made in the code 💪!
-
-1. [Ryo](https://t.me/ryokihara). Donation: **80$**
-
-1. [Ilias Ism](https://twitter.com/illyism). Donation: **69$**
-
-    *Message:* I wanted to thank you for your amazing code! It helped me start my own Telegram ChatGPT bot and add a bunch of cool features. I really appreciate your hard work on this project. For anyone interested in trying my bot, feel free to check it out here: [magicbuddy.chat](https://magicbuddy.chat) 🤖 Thanks again! 😊
-
-1. [Sebastian](https://t.me/dell1503). Donation: **55$**
-
-1. [Alexander Zimin](https://t.me/azimin). Donation: **50$**
-
-1. [Kbaji20](https://t.me/Kbaji20). Donation: **30$**
-
-1. [Hans Blinken](https://t.me/hblink). Donation: **10$**
-
-## Contributors
-- Main contributor: @karfly
-- [Jadve AI](https://jadve.com).
-
-## References
-1. [*Build ChatGPT from GPT-3*](https://learnprompting.org/docs/applied_prompting/build_chatgpt)
