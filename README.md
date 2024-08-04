@@ -8,9 +8,13 @@
 1. Get your [OpenAI API](https://openai.com/api/) key
 2. Get your Telegram bot token from [@BotFather](https://t.me/BotFather)
 3. Edit `[config/config.example.yml](https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/config.example.yml)` to set your tokens and run 2 commands below (*if you're advanced user, you can also edit* `config/config.example.env`):
+
 telegram_token: ""
+
 openai_api_key: ""
+
 openai_api_base: null  # leave null to use default api base or you can put your own base url here
+
 allowed_telegram_usernames: [] 
 
 >Models - https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/models.yml:
