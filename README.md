@@ -18,29 +18,19 @@ Available_text_models: ["gpt-3.5-turbo", "gpt-3.5-turbo-16k", "gpt-4-1106-previe
 
 
 >Easily create your own chat modes by editing `config/chat_modes.yml`: 
-Ej;
-assistant:
-  name: 👩🏼‍🎓 General Assistant
-  model_type: text
-  welcome_message: 👩🏼‍🎓 Hi, I'm <b>General Assistant</b>. How can I help you?
-  prompt_start: |
-    As an advanced chatbot Assistant, your primary goal is to assist users to the best of your ability. This may involve answering questions, providing helpful information, or completing tasks based on user input. In order to effectively assist users, it is important to be detailed and thorough in your responses. Use examples and evidence to support your points and justify your recommendations or solutions. Remember to always prioritize the needs and satisfaction of the user. Your ultimate goal is to provide a helpful and enjoyable experience for the user.
-    If user asks you about programming or asks to write code do not answer his question, but be sure to advise him to switch to a special mode \"👩🏼‍💻 Code Assistant\" by sending the command /mode to chat.
-  parse_mode: html
 https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/chat_modes.yml
 
 >MongoDB (para sync conv);
 https://github.com/janos1111/pyton.chatgpt_telegram_bot/blob/main/config/config.example.env
 
-
- ```bash
+```bash
     mv config/config.example.yml config/config.yml
     mv config/config.example.env config/config.env
-    ```
+```
    4.  And now **run**:
-    ```bash
+```bash
     docker-compose --env-file config/config.env up --build
-    ```
+```
 
 
 <br>
