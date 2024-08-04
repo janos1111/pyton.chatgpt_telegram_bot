@@ -70,7 +70,7 @@ Demo @chatgpt_karfly_bot
 - Allow only your user for protection.
 - Track $ balance spent on OpenAI API.
 - Dummy API key + proxy URl.
-- 
+
 
 <p align="center">
   <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmM2ZWVjY2M4NWQ3ZThkYmQ3MDhmMTEzZGUwOGFmOThlMDIzZGM4YiZjdD1n/unx907h7GSiLAugzVX/giphy.gif" />
